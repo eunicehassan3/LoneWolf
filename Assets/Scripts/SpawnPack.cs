@@ -3,16 +3,23 @@ using UnityEngine;
 
 public class SpawnPack : MonoBehaviour
 {
-    
+    public GameObject wolfPack;
+    public GameObject predator;
+    public GameObject prey;
+
+    public int predatorCount; 
+
+    public int preyCount;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // int xVal = Random.Range(xMin,0);
-        // int zVal = Random.Range(zMin,zMax);
+        GetPredatorSpawnPoint();
+        GetPreySpawnPoint();
 
         Vector3 spawnPoint = GetWolfPackSpawnPoint();
-        gameObject.transform.position = spawnPoint;
-        // Instantiate(gameObject, spawnPoint, gameObject.transform.rotation);
+        wolfPack.gameObject.transform.position = spawnPoint;
+
     }
     Vector3 GetWolfPackSpawnPoint()
     {
@@ -48,7 +55,39 @@ public class SpawnPack : MonoBehaviour
                 break;
         }
 
-        return new Vector3(x, gameObject.transform.position.y, z);
+        return new Vector3(x, wolfPack.gameObject.transform.position.y, z);
+    }
+
+
+    void GetPredatorSpawnPoint(){
+        float x = 0;
+        float z = 0;
+
+
+        for(int i = 0; i < predatorCount; i++){
+            x =  Random.Range(-300, 300);
+            z = Random.Range(-300, 300);
+            Vector3 predatorSpawnPoint = new Vector3(x, predator.gameObject.transform.position.y, z);
+            Instantiate(predator, predatorSpawnPoint, predator.gameObject.transform.rotation);
+        }
+        
+
+    }
+
+
+    void GetPreySpawnPoint(){
+        float x = 0;
+        float z = 0;
+
+
+        for(int i = 0; i < preyCount; i++){
+            x =  Random.Range(-300, 300);
+            z = Random.Range(-300, 300);
+            Vector3 preySpawnPoint = new Vector3(x, prey.gameObject.transform.position.y, z);
+            Instantiate(prey, preySpawnPoint, prey.gameObject.transform.rotation);
+        }
+        
+
     }
     
 }
