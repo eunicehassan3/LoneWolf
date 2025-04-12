@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float rotationSpeed = 180f;
     private Rigidbody rb;
     private Vector3 moveInput;
 
@@ -20,18 +21,24 @@ public class PlayerBehavior : MonoBehaviour
     void Update()
     {
 
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveZ = Input.GetAxisRaw("Vertical");
+        float RotationInput = Input.GetAxisRaw("Horizontal");
+        float moveInput = Input.GetAxisRaw("Vertical");
 
         if(Input.GetKeyDown(KeyCode.Space)){
             AttemptAttack();
         }
 
-        moveInput = new Vector3(moveX, 0f, moveZ).normalized;
-        // gameObject.transform.rotation = 
+        rb.MovePosition(rb.position + transform.forward * Time.deltaTime * moveInput * moveSpeed);
+        
+        transform.Rotate(0f, RotationInput * rotationSpeed * Time.deltaTime, 0f);
 
-       bool isMoving = moveInput.magnitude > 0;
-        animator.SetBool("isMoving", isMoving);
+        // Quaternion targetRotation = Quaternion.Euler(0f, transform.eulerAngles.y + rotation, 0f);
+        // transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+
+    //    bool isMoving = moveInput.magnitude > 0;
+    //     animator.SetBool("isMoving", isMoving);
+        animator.SetBool("isMoving", moveInput != 0);
+        animator.SetBool("isWalking", RotationInput != 0);
     }
 
     void FixedUpdate()
