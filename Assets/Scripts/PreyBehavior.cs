@@ -1,4 +1,4 @@
-using System.Security.Cryptography.X509Certificates;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class PreyBehavior : MonoBehaviour
@@ -9,15 +9,24 @@ public class PreyBehavior : MonoBehaviour
     public float viewAngle = 90f; // field of view in degrees
 
     public bool canSeeWolf;
+    private NavMeshAgent agent;
+    public float fleeDistance = 15f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         canSeeWolf = false;
     }
 
     void Update()
     {
+        SeeWolf();
+        preyRunAway();
+
+    }
+
+    void SeeWolf(){
         Vector3 directionToWolf = wolf.position - transform.position;
         float angleToWolf = Vector3.Angle(transform.forward, directionToWolf);
 
@@ -36,6 +45,20 @@ public class PreyBehavior : MonoBehaviour
         }
 
         canSeeWolf = false;
+
+    }
+     void preyRunAway(){
+        if (canSeeWolf)
+        {
+            Vector3 directionAway = (transform.position - wolf.position).normalized;
+            Vector3 fleeTarget = transform.position + directionAway * fleeDistance;
+
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(fleeTarget, out hit, fleeDistance, NavMesh.AllAreas))
+            {
+                agent.SetDestination(hit.position);
+            }
+        }
     }
 
 

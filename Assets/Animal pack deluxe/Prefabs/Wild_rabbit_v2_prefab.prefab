@@ -42,9 +42,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4632031846521638}
   - component: {fileID: 95978546307975870}
+  - component: {fileID: 4166659880201235608}
   m_Layer: 0
   m_Name: Wild_rabbit_v2_prefab
-  m_TagString: Untagged
+  m_TagString: Prey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,9 +59,9 @@ Transform:
   m_GameObject: {fileID: 1038650439005304}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4256040107157962}
   - {fileID: 4374978340286478}
@@ -88,6 +89,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &4166659880201235608
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038650439005304}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1052421133370920
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +412,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4256040107157962}
   - component: {fileID: 137223047522622260}
+  - component: {fileID: 7883048026016646487}
+  - component: {fileID: 1814190154825883611}
   m_Layer: 0
   m_Name: wild_rabbit_test5
   m_TagString: Untagged
@@ -512,6 +537,54 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0013428032, y: 0.20706345, z: 0.06991319}
     m_Extent: {x: 0.1566827, y: 0.2739627, z: 0.34858423}
   m_DirtyAABB: 0
+--- !u!54 &7883048026016646487
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290375776210476}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1814190154825883611
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290375776210476}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3133654, y: 0.69716865, z: 0.54792553}
+  m_Center: {x: -0.0013428032, y: -0.06991322, z: 0.20706347}
 --- !u!1 &1295976962146210
 GameObject:
   m_ObjectHideFlags: 0

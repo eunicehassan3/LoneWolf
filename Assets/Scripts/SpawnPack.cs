@@ -1,19 +1,24 @@
 
 using UnityEngine;
 
+
 public class SpawnPack : MonoBehaviour
 {
     public GameObject wolfPack;
     public GameObject predator;
-    public GameObject prey;
+    public GameObject[] prey;
 
     public int predatorCount; 
 
     public int preyCount;
 
+     
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         GetPredatorSpawnPoint();
         GetPreySpawnPoint();
 
@@ -78,16 +83,20 @@ public class SpawnPack : MonoBehaviour
     void GetPreySpawnPoint(){
         float x = 0;
         float z = 0;
+        int preyNum = 0;
 
 
         for(int i = 0; i < preyCount; i++){
             x =  Random.Range(-300, 300);
             z = Random.Range(-300, 300);
-            Vector3 preySpawnPoint = new Vector3(x, prey.gameObject.transform.position.y, z);
-            Instantiate(prey, preySpawnPoint, prey.gameObject.transform.rotation);
+            preyNum = Random.Range(0, prey.Length);
+            Vector3 preySpawnPoint = new Vector3(x, prey[preyNum].gameObject.transform.position.y, z);
+            Instantiate(prey[preyNum], preySpawnPoint, prey[preyNum].gameObject.transform.rotation);
         }
         
 
     }
+
+
     
 }

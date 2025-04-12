@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4035390921794344}
   - component: {fileID: 137147978362203020}
+  - component: {fileID: 5616647077455542014}
   m_Layer: 0
   m_Name: Wolf_Mesh
   m_TagString: Untagged
@@ -170,6 +171,27 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.004586689, y: 0.54872423, z: 0.17016014}
     m_Extent: {x: 0.20984915, y: 0.57486314, z: 0.84898067}
   m_DirtyAABB: 0
+--- !u!65 &5616647077455542014
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016369514534700}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.012982684, y: 0.052523553, z: 0.035564836}
+  m_Center: {x: -0.00014188801, y: 0.0052636126, z: 0.016973851}
 --- !u!1 &1039924873126388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,6 +1547,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4913353921665142}
   - component: {fileID: 95109918701140282}
+  - component: {fileID: 3606988490480430981}
+  - component: {fileID: 5861682775630630534}
   m_Layer: 0
   m_Name: Wolf_prefab
   m_TagString: Untagged
@@ -1542,8 +1566,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4636372717927330}
   - {fileID: 4035390921794344}
@@ -1571,6 +1595,47 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3606988490480430981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817446995028838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bd21719523ad48779c36ba69754b3b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  attackRange: 2
+--- !u!54 &5861682775630630534
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817446995028838}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1852420776143842
 GameObject:
   m_ObjectHideFlags: 0

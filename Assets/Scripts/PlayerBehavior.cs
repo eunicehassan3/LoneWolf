@@ -8,15 +8,18 @@ public class PlayerBehavior : MonoBehaviour
 
     public float attackRange = 2f;
     private GameObject[] allPrey;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         allPrey = GameObject.FindGameObjectsWithTag("Prey");
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
+
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveZ = Input.GetAxisRaw("Vertical");
 
@@ -25,6 +28,10 @@ public class PlayerBehavior : MonoBehaviour
         }
 
         moveInput = new Vector3(moveX, 0f, moveZ).normalized;
+        // gameObject.transform.rotation = 
+
+       bool isMoving = moveInput.magnitude > 0;
+        animator.SetBool("isMoving", isMoving);
     }
 
     void FixedUpdate()
