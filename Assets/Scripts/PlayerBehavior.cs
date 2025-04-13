@@ -55,7 +55,7 @@ public class PlayerBehavior : MonoBehaviour
     if(distance <= attackRange){
         PreyBehavior preyGameObject = prey.GetComponent<PreyBehavior>();
         if (preyGameObject != null && !preyGameObject.canSeeWolf){
-            if (!preyGameObject.canSeeWolf){
+            if (preyGameObject != null && !preyGameObject.canSeeWolf){
                 Debug.Log("Sneak attack successful!");
                 Destroy(prey.gameObject);
         

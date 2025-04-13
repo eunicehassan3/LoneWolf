@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4632031846521638}
   - component: {fileID: 95978546307975870}
   - component: {fileID: 4166659880201235608}
+  - component: {fileID: 8278592941563289654}
   m_Layer: 0
   m_Name: Wild_rabbit_v2_prefab
   m_TagString: Prey
@@ -111,6 +112,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8278592941563289654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038650439005304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5803da567a904b68af8c0e54cb1ec62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewDistance: 15
+  viewAngle: 90
+  canSeeWolf: 0
+  fleeDistance: 15
 --- !u!1 &1052421133370920
 GameObject:
   m_ObjectHideFlags: 0

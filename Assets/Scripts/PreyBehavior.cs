@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PreyBehavior : MonoBehaviour{
 
-    public Transform wolf;
+    private Transform wolf;
     public float viewDistance = 15f;
     public float viewAngle = 90f; 
 
@@ -19,6 +19,8 @@ public class PreyBehavior : MonoBehaviour{
         agent = GetComponent<NavMeshAgent>();
         preyAnimator = GetComponent<Animator>();
         canSeeWolf = false;
+        StartCoroutine(BehaviorLoop());
+        wolf = GameObject.FindWithTag("Player").GetComponent<Transform>();
         // preyAnimator.SetBool("isEating", true);
     }
 
@@ -61,9 +63,11 @@ public class PreyBehavior : MonoBehaviour{
             {
                 
                 agent.SetDestination(hit.position);
-                // preyAnimator.SetBool("isEating", false);
+                
                 preyAnimator.SetBool("isRunning", true);
-
+                if(Vector3.Distance(transform.position, hit.position) == 0){
+                    preyAnimator.SetBool("isRunning", false);
+                }
 
             }
 
@@ -71,27 +75,35 @@ public class PreyBehavior : MonoBehaviour{
         }
     }
 
+    Vector3 GetRandomDestination()
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * 5;
+        randomDirection += transform.position;
+
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, 5, 1);
+        return hit.position;
+    }
+
     IEnumerator BehaviorLoop(){
         while (!canSeeWolf)
         {
             
-            preyAnimator.SetTrigger("Eat");
+            preyAnimator.SetBool("isEating", true);
             yield return new WaitForSeconds(3f); 
-
+            preyAnimator.SetBool("isEating", false);
            
             Vector3 destination = GetRandomDestination();
             agent.SetDestination(destination);
-            preyAnimator.SetTrigger("Walk");
+            preyAnimator.SetBool("isWalking", true);
 
             while (Vector3.Distance(transform.position, destination) > 0.5f)
             {
-                if (isSpotted) yield break;
+                if (canSeeWolf) yield break;
                 yield return null;
             }
+        }
 
-    
-
-
-    
+    }  
     
 }
