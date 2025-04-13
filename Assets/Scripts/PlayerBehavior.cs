@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
@@ -32,38 +33,55 @@ public class PlayerBehavior : MonoBehaviour
         
         transform.Rotate(0f, RotationInput * rotationSpeed * Time.deltaTime, 0f);
 
-        // Quaternion targetRotation = Quaternion.Euler(0f, transform.eulerAngles.y + rotation, 0f);
-        // transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
-
-    //    bool isMoving = moveInput.magnitude > 0;
-    //     animator.SetBool("isMoving", isMoving);
+        
         animator.SetBool("isMoving", moveInput != 0);
         animator.SetBool("isWalking", RotationInput != 0);
     }
 
-    // void FixedUpdate()
-    // {
-    //     rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
-    // }
-
     void AttemptAttack()
-    {
-        
+{
+    GameObject[] allPrey = GameObject.FindGameObjectsWithTag("Prey");
 
-    foreach (GameObject prey in allPrey){
-    float distance = Vector3.Distance(transform.position, prey.transform.position);
-    if(distance <= attackRange){
-        PreyBehavior preyGameObject = prey.GetComponent<PreyBehavior>();
-        if (preyGameObject != null && !preyGameObject.canSeeWolf){
-            if (preyGameObject != null && !preyGameObject.canSeeWolf){
+    foreach (GameObject prey in allPrey)
+    {
+        if (prey == null) continue; // In case it's already destroyed
+
+        float distance = Vector3.Distance(transform.position, prey.transform.position);
+        if (distance <= attackRange)
+        {
+            PreyBehavior preyGameObject = prey.GetComponent<PreyBehavior>();
+            if (preyGameObject != null && !preyGameObject.canSeeWolf)
+            {
                 Debug.Log("Sneak attack successful!");
                 Destroy(prey.gameObject);
-        
+                return;
             }
-            else{
-                Debug.Log("Prey saw you! It runs!");}
+            else
+            {
+                Debug.Log("Prey saw you! It runs!");
+            }
         }
     }
 }
-    }
+
+
+//     void AttemptAttack()
+//     {
+//     GameObject[] allPrey = GameObject.FindGameObjectsWithTag("Prey");
+//     foreach (GameObject prey in allPrey) {  
+//     float distance = Vector3.Distance(transform.position, prey.transform.position);
+//     if(distance <= attackRange){
+//         PreyBehavior preyGameObject = prey.GetComponent<PreyBehavior>();
+//         if (preyGameObject != null && !preyGameObject.canSeeWolf){
+//             if (preyGameObject != null && !preyGameObject.canSeeWolf){
+//                 Debug.Log("Sneak attack successful!");
+//                 Destroy(prey.gameObject);
+        
+//             }
+//             else{
+//                 Debug.Log("Prey saw you! It runs!");}
+//         }
+//     }
+// }
+//     }
 }

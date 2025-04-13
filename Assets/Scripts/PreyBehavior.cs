@@ -63,6 +63,7 @@ public class PreyBehavior : MonoBehaviour{
             {
                 
                 agent.SetDestination(hit.position);
+                agent.speed = 10;
                 
                 preyAnimator.SetBool("isRunning", true);
                 if(Vector3.Distance(transform.position, hit.position) == 0){
@@ -95,6 +96,7 @@ public class PreyBehavior : MonoBehaviour{
            
             Vector3 destination = GetRandomDestination();
             agent.SetDestination(destination);
+            agent.speed = 3.5f;
             preyAnimator.SetBool("isWalking", true);
 
             while (Vector3.Distance(transform.position, destination) > 0.5f)
