@@ -41,10 +41,10 @@ public class PlayerBehavior : MonoBehaviour
         animator.SetBool("isWalking", RotationInput != 0);
     }
 
-    void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
-    }
+    // void FixedUpdate()
+    // {
+    //     rb.MovePosition(rb.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+    // }
 
     void AttemptAttack()
     {
