@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
+using System.Runtime.CompilerServices;
 
 public class PredatorBehavior : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class PredatorBehavior : MonoBehaviour
     private Animator animator;
     public bool canSeeWolf;
     private NavMeshAgent agent;
+    public float viewDistance = 15f;
+    public float viewAngle = 90f; 
+    public float attackRange = 5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,9 +23,12 @@ public class PredatorBehavior : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   //bear is wandering around the forrest
+    {   
+        //bear is wandering around the forrest
         //if the bear is within a certain distance from the wolf/sees the wolf
+        SeeWolf();
         //then the bear should run toward the wolf 
+        AttackWolf();
         //if the bear is able to reach the wolf, then it dies 
         //[OPTIONAL IMPLEMENTATION: instead of the just dying like that -- a bear attack wounds wolf but doesn't kill it, 3-4 wounds will kill the wolf]
         //if the wolf gets out of the reach  of the bear, then the bear continues wondering the forrest
@@ -60,6 +67,43 @@ public class PredatorBehavior : MonoBehaviour
                 yield return null;
             }
         }
-
     } 
+
+
+    void SeeWolf(){
+            Vector3 directionToWolf = wolf.position - transform.position;
+            float angleToWolf = Vector3.Angle(transform.forward, directionToWolf);
+
+            if (directionToWolf.magnitude < viewDistance && angleToWolf < viewAngle / 2f)
+            {
+                
+                if (Physics.Raycast(transform.position, directionToWolf.normalized, out RaycastHit hit, viewDistance))
+                {
+                    if (hit.transform == wolf)
+                    {
+                        canSeeWolf = true;
+                        Debug.Log("Predator can see wolf");
+                        return;
+                    }
+                }
+            }
+
+            canSeeWolf = false;
+
+        }
+
+    void AttackWolf(){
+        if (canSeeWolf)
+        {
+            agent.SetDestination(wolf.position);
+            agent.speed = 10;
+            animator.SetBool("isRunning", true);
+            
+            
+            if (Vector3.Distance(transform.position, wolf.position) <= attackRange){
+                animator.SetBool("isRunning", false);
+                animator.SetTrigger("Attack"); 
+            }
+        }
+    }
 }
