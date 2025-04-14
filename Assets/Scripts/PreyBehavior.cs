@@ -96,8 +96,11 @@ public class PreyBehavior : MonoBehaviour{
            
             Vector3 destination = GetRandomDestination();
             agent.SetDestination(destination);
-            agent.speed = 3.5f;
+            // while(transform.position != destination){
+            //     preyAnimator.SetBool("isWalking", true);
+            // }
             preyAnimator.SetBool("isWalking", true);
+            agent.speed = 3.5f;
 
             while (Vector3.Distance(transform.position, destination) > 0.5f)
             {
