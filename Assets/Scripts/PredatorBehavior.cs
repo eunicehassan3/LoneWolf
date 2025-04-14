@@ -89,6 +89,8 @@ public class PredatorBehavior : MonoBehaviour
             }
 
             canSeeWolf = false;
+            animator.SetBool("isWalking", false);
+
 
         }
 
@@ -105,5 +107,6 @@ public class PredatorBehavior : MonoBehaviour
                 animator.SetTrigger("Attack"); 
             }
         }
+         animator.SetBool("isRunning", false);
     }
 }
