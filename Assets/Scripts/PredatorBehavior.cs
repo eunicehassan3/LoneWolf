@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
-using System.Runtime.CompilerServices;
 
 public class PredatorBehavior : MonoBehaviour
 {
@@ -44,30 +43,57 @@ public class PredatorBehavior : MonoBehaviour
         return hit.position;
     }
 
-     IEnumerator BehaviorLoop(){
+    //  IEnumerator BehaviorLoop(){
+    //     while (!canSeeWolf)
+    //     {
+            
+    //         animator.SetBool("isEating", true);
+    //         yield return new WaitForSeconds(3f); 
+    //         animator.SetBool("isEating", false);
+           
+    //         Vector3 destination = GetRandomDestination();
+    //         agent.SetDestination(destination);
+    //         // while(transform.position != destination){
+    //         //     animator.SetBool("isWalking", true);
+    //         // }
+    //         animator.SetBool("isWalking", true);
+    //         agent.speed = 3.5f;
+            
+
+    //         while (Vector3.Distance(transform.position, destination) > 0.5f)
+    //         {
+    //             if (canSeeWolf) yield break;
+    //             yield return null;
+    //         }
+    //     }
+    // } 
+
+    IEnumerator BehaviorLoop()
+    {
         while (!canSeeWolf)
         {
-            
             animator.SetBool("isEating", true);
-            yield return new WaitForSeconds(3f); 
+            yield return new WaitForSeconds(3f);
             animator.SetBool("isEating", false);
-           
+
             Vector3 destination = GetRandomDestination();
             agent.SetDestination(destination);
-            // while(transform.position != destination){
-            //     animator.SetBool("isWalking", true);
-            // }
-            animator.SetBool("isWalking", true);
             agent.speed = 3.5f;
-            
+
+            animator.SetBool("isWalking", true);
 
             while (Vector3.Distance(transform.position, destination) > 0.5f)
             {
                 if (canSeeWolf) yield break;
                 yield return null;
             }
+
+            animator.SetBool("isWalking", false);
+
+            yield return new WaitForSeconds(Random.Range(1f, 3f));
         }
-    } 
+    }
+
 
 
     void SeeWolf(){
@@ -94,19 +120,31 @@ public class PredatorBehavior : MonoBehaviour
 
         }
 
-    void AttackWolf(){
-        if (canSeeWolf)
+
+    void AttackWolf()
+{
+    if (canSeeWolf)
+    {
+        agent.SetDestination(wolf.position);
+        agent.speed = 10f;
+
+        float distance = Vector3.Distance(transform.position, wolf.position);
+
+        if (distance > attackRange)
         {
-            agent.SetDestination(wolf.position);
-            agent.speed = 10;
             animator.SetBool("isRunning", true);
-            
-            
-            if (Vector3.Distance(transform.position, wolf.position) <= attackRange){
-                animator.SetBool("isRunning", false);
-                animator.SetTrigger("Attack"); 
-            }
+            animator.SetBool("isWalking", false);
         }
-         animator.SetBool("isRunning", false);
+        else
+        {
+            animator.SetBool("isRunning", false);
+            animator.SetTrigger("Attack");
+        }
     }
+    else
+    {
+        // Only stop running if we’ve lost sight
+        animator.SetBool("isRunning", false);
+    }
+}
 }

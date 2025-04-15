@@ -86,29 +86,30 @@ public class PreyBehavior : MonoBehaviour{
         return hit.position;
     }
 
-    IEnumerator BehaviorLoop(){
+     IEnumerator BehaviorLoop()
+    {
         while (!canSeeWolf)
         {
-            
             preyAnimator.SetBool("isEating", true);
-            yield return new WaitForSeconds(3f); 
+            yield return new WaitForSeconds(3f);
             preyAnimator.SetBool("isEating", false);
-           
+
             Vector3 destination = GetRandomDestination();
             agent.SetDestination(destination);
-            // while(transform.position != destination){
-            //     preyAnimator.SetBool("isWalking", true);
-            // }
-            preyAnimator.SetBool("isWalking", true);
             agent.speed = 3.5f;
+
+            preyAnimator.SetBool("isWalking", true);
 
             while (Vector3.Distance(transform.position, destination) > 0.5f)
             {
                 if (canSeeWolf) yield break;
                 yield return null;
             }
-        }
 
-    }  
+            preyAnimator.SetBool("isWalking", false);
+
+            yield return new WaitForSeconds(Random.Range(1f, 3f));
+        }
+    }
     
 }

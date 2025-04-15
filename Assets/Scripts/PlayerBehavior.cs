@@ -11,6 +11,8 @@ public class PlayerBehavior : MonoBehaviour
     public float attackRange = 2f;
     private GameObject[] allPrey;
     private Animator animator;
+    public float health = 5;
+    public float food;
 
     void Start()
     {
@@ -37,7 +39,13 @@ public class PlayerBehavior : MonoBehaviour
         
         animator.SetBool("isMoving", moveInput != 0);
         animator.SetBool("isWalking", RotationInput != 0);
-    }
+
+        if(health <= 0){
+            animator.SetBool("isDead", true);
+            Debug.Log("Game Over"); 
+            }
+               
+        }
 
     void AttemptAttack(){
         GameObject[] allPrey = GameObject.FindGameObjectsWithTag("Prey");
@@ -64,4 +72,11 @@ public class PlayerBehavior : MonoBehaviour
             }
         }
     }
+
+    public void TakeDamage(float damageAmount){
+        health -= damageAmount;
+    }
+
+    
+
 }
