@@ -939,6 +939,7 @@ GameObject:
   - component: {fileID: 95040165582759034}
   - component: {fileID: 3798217575757022725}
   - component: {fileID: 5978286411770983530}
+  - component: {fileID: 22423022627883672}
   m_Layer: 0
   m_Name: Wild_rabbit_prefab
   m_TagString: Prey
@@ -1023,6 +1024,33 @@ MonoBehaviour:
   viewAngle: 90
   canSeeWolf: 0
   fleeDistance: 15
+--- !u!54 &22423022627883672
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502059054957796}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1542613413889116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,8 +1414,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4748030660775936}
   - component: {fileID: 137249002922389454}
-  - component: {fileID: 2501583184559290564}
-  - component: {fileID: 4280288984756909718}
   m_Layer: 0
   m_Name: wild_rabbit_test5
   m_TagString: Untagged
@@ -1511,54 +1537,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0013428032, y: 0.20706345, z: 0.06991319}
     m_Extent: {x: 0.1566827, y: 0.2739627, z: 0.34858423}
   m_DirtyAABB: 0
---- !u!54 &2501583184559290564
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920340869250126}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &4280288984756909718
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920340869250126}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.3133654, y: 0.69716865, z: 0.54792553}
-  m_Center: {x: -0.30134287, y: -0.06991322, z: 0.20706347}
 --- !u!1 &1944041739274064
 GameObject:
   m_ObjectHideFlags: 0

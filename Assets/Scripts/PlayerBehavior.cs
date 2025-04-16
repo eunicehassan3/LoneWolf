@@ -69,6 +69,7 @@ public class PlayerBehavior : MonoBehaviour
                 if (preyGameObject != null && !preyGameObject.canSeeWolf)
                 {
                     Debug.Log("Sneak attack successful!");
+                    prey.GetComponent<Animator>().SetBool("isDead", true);
                     food = Mathf.Min(food + 20f, maxFood);
 
 

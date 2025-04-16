@@ -1386,8 +1386,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4609530908890964}
   - component: {fileID: 137000871570845688}
-  - component: {fileID: 2952361492859748184}
-  - component: {fileID: 4912847987892019268}
   m_Layer: 0
   m_Name: deer_body
   m_TagString: Untagged
@@ -1514,54 +1512,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0000014901161, y: 0.76068395, z: 0.21142131}
     m_Extent: {x: 0.3005421, y: 0.79521674, z: 0.8915157}
   m_DirtyAABB: 0
---- !u!54 &2952361492859748184
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850483377877952}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &4912847987892019268
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850483377877952}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.6010842, y: 1.5904335, z: 1.7830313}
-  m_Center: {x: 0.0000014901161, y: 0.76068395, z: 0.21142131}
 --- !u!1 &1851013706775410
 GameObject:
   m_ObjectHideFlags: 0
