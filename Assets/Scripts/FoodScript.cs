@@ -10,6 +10,8 @@ public class FoodScript : MonoBehaviour
     void Start()
     {
         foodSlider = GetComponent<Slider>();
+        // float wolfFood = wolf.GetComponent<PlayerBehavior>().FoodTimer();
+        
     }
 
     // Update is called once per frame
