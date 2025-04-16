@@ -139,11 +139,12 @@ public class PredatorBehavior : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
             animator.SetTrigger("Attack");
+            wolf.GetComponent<PlayerBehavior>().TakeDamage(1);
         }
     }
     else
     {
-        // Only stop running if we’ve lost sight
+       
         animator.SetBool("isRunning", false);
     }
 }

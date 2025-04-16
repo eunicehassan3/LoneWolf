@@ -72,7 +72,8 @@ public class SpawnPack : MonoBehaviour
         for(int i = 0; i < predatorCount; i++){
             x =  Random.Range(-300, 300);
             z = Random.Range(-300, 300);
-            Vector3 predatorSpawnPoint = new Vector3(x, predator.gameObject.transform.position.y, z);
+            // Vector3 predatorSpawnPoint = new Vector3(x, predator.gameObject.transform.position.y, z);
+            Vector3 predatorSpawnPoint = new Vector3(x, 0.15f, z);
             Instantiate(predator, predatorSpawnPoint, predator.gameObject.transform.rotation);
         }
         

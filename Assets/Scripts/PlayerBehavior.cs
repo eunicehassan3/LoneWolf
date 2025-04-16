@@ -12,7 +12,9 @@ public class PlayerBehavior : MonoBehaviour
     private GameObject[] allPrey;
     private Animator animator;
     public float health = 5;
-    public float food;
+    public float food = 0;
+    private float totalMin = 120;
+
 
     void Start()
     {
@@ -44,6 +46,9 @@ public class PlayerBehavior : MonoBehaviour
             animator.SetBool("isDead", true);
             Debug.Log("Game Over"); 
             }
+
+        FoodTimer();
+        
                
         }
 
@@ -61,6 +66,8 @@ public class PlayerBehavior : MonoBehaviour
                 if (preyGameObject != null && !preyGameObject.canSeeWolf)
                 {
                     Debug.Log("Sneak attack successful!");
+                    food += 10;
+
 
                     Destroy(prey.gameObject);
                     return;
@@ -77,6 +84,15 @@ public class PlayerBehavior : MonoBehaviour
         health -= damageAmount;
     }
 
+    public float FoodTimer(){
+        totalMin -= 1 * Time.deltaTime;
+        
+
+        if(totalMin <= 0){
+            Debug.Log("Game Over");
+        }
+        return totalMin;
+    }
     
 
 }
