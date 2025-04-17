@@ -16,6 +16,7 @@ public class PlayerBehavior : MonoBehaviour
     public float food = 600;
     private float damageCooldown = 1f;
     private float lastDamageTime = -999f;
+    private AudioSource foodAudio;
 
 
     void Start()
@@ -23,6 +24,7 @@ public class PlayerBehavior : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         allPrey = GameObject.FindGameObjectsWithTag("Prey");
         animator = GetComponent<Animator>();
+        foodAudio = GetComponent<AudioSource>();
         food = maxFood;
     }
 
@@ -70,7 +72,8 @@ public class PlayerBehavior : MonoBehaviour
                 {
                     Debug.Log("Sneak attack successful!");
                     prey.GetComponent<Animator>().SetBool("isDead", true);
-                    food = Mathf.Min(food + 20f, maxFood);
+                    foodAudio.Play();
+                    food = Mathf.Min(food + 60f, maxFood);
 
 
                     Destroy(prey.gameObject);
