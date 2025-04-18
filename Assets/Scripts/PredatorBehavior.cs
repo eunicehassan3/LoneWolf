@@ -10,13 +10,15 @@ public class PredatorBehavior : MonoBehaviour
     private NavMeshAgent agent;
     public float viewDistance = 15f;
     public float viewAngle = 90f; 
-    public float attackRange = 5f;
+    public float attackRange = 3f;
+    private AudioSource attackSound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
         wolf = GameObject.FindWithTag("Player").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
+        attackSound = GetComponent<AudioSource>();
         StartCoroutine(BehaviorLoop());
     }
 
@@ -28,9 +30,7 @@ public class PredatorBehavior : MonoBehaviour
         SeeWolf();
         //then the bear should run toward the wolf 
         AttackWolf();
-        //if the bear is able to reach the wolf, then it dies 
-        //[OPTIONAL IMPLEMENTATION: instead of the just dying like that -- a bear attack wounds wolf but doesn't kill it, 3-4 wounds will kill the wolf]
-        //if the wolf gets out of the reach  of the bear, then the bear continues wondering the forrest
+        
     }
 
     Vector3 GetRandomDestination()
@@ -42,31 +42,6 @@ public class PredatorBehavior : MonoBehaviour
         NavMesh.SamplePosition(randomDirection, out hit, 5, 1);
         return hit.position;
     }
-
-    //  IEnumerator BehaviorLoop(){
-    //     while (!canSeeWolf)
-    //     {
-            
-    //         animator.SetBool("isEating", true);
-    //         yield return new WaitForSeconds(3f); 
-    //         animator.SetBool("isEating", false);
-           
-    //         Vector3 destination = GetRandomDestination();
-    //         agent.SetDestination(destination);
-    //         // while(transform.position != destination){
-    //         //     animator.SetBool("isWalking", true);
-    //         // }
-    //         animator.SetBool("isWalking", true);
-    //         agent.speed = 3.5f;
-            
-
-    //         while (Vector3.Distance(transform.position, destination) > 0.5f)
-    //         {
-    //             if (canSeeWolf) yield break;
-    //             yield return null;
-    //         }
-    //     }
-    // } 
 
     IEnumerator BehaviorLoop()
     {
@@ -140,6 +115,7 @@ public class PredatorBehavior : MonoBehaviour
             animator.SetBool("isRunning", false);
             animator.SetTrigger("Attack");
             wolf.GetComponent<PlayerBehavior>().TakeDamage(1);
+            attackSound.Play();
         }
     }
     else
