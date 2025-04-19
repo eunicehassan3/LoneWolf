@@ -50,8 +50,7 @@ public class PlayerBehavior : MonoBehaviour
 
         if(health <= 0){
             animator.SetBool("isDead", true);
-            SceneManager.LoadScene("GameOver");
-            Debug.Log("Game Over"); 
+            SceneManager.LoadScene("GameOver 1");
             }
 
         FoodTimer();
@@ -103,6 +102,7 @@ public class PlayerBehavior : MonoBehaviour
         if(food <= 0){
             food=0;
             animator.SetBool("isDead", true);
+            SceneManager.LoadScene("GameOver");
             Debug.Log("Game Over");
         }
         return food;

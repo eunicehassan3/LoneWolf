@@ -18,4 +18,8 @@ public class ChangeScene : MonoBehaviour
     public void GoToGameOver(){
         SceneManager.LoadScene("GameOver");
     }
+
+    public void GoToInstructions(){
+        SceneManager.LoadScene("Instructions");
+    }
 }
