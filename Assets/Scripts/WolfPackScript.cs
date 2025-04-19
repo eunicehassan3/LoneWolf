@@ -6,17 +6,20 @@ public class WolfPackScript : MonoBehaviour
     private Transform wolf;
     public float viewDistance = 15f;
     public float viewAngle = 90f; 
+    private Animator wolfPackAnimator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         wolf = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        wolfPackAnimator = GetComponent<Animator>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        wolfPackAnimator.SetBool("isIdle", true);
         SeeWolf();
     }
 

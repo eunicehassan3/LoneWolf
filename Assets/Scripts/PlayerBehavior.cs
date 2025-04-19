@@ -1,5 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class PlayerBehavior : MonoBehaviour
 
         if(health <= 0){
             animator.SetBool("isDead", true);
+            SceneManager.LoadScene("GameOver");
             Debug.Log("Game Over"); 
             }
 
@@ -70,7 +72,7 @@ public class PlayerBehavior : MonoBehaviour
                 PreyBehavior preyGameObject = prey.GetComponent<PreyBehavior>();
                 if (preyGameObject != null && !preyGameObject.canSeeWolf)
                 {
-                    Debug.Log("Sneak attack successful!");
+                    // Debug.Log("Sneak attack successful!");
                     prey.GetComponent<Animator>().SetBool("isDead", true);
                     foodAudio.Play();
                     food = Mathf.Min(food + 60f, maxFood);
@@ -81,7 +83,7 @@ public class PlayerBehavior : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Prey saw you! It runs!");
+                    // Debug.Log("Prey saw you! It runs!");
                 }
             }
         }
