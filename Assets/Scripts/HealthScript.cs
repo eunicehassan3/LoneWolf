@@ -32,9 +32,9 @@ public class HealthScript : MonoBehaviour
         // float foodPercent = wolfFood / maxFood;
         // healthSlider.value = wolfHealth;
 
-        if (wolfHealth  == 1){
+        if (wolfHealth  <= 1){
             HealthFill.color =  new Color(0.69f, 0.0f, 0.0f); //red
-        } else if (wolfHealth  == 2){
+        } else if (wolfHealth  <= 2 && wolfHealth  > 1){
             HealthFill.color = new Color(0.68f, 0.40f, 0.02f); // orange
         } else{
             HealthFill.color = new Color(0.0f, 0.69f, 0.016f); ; //green

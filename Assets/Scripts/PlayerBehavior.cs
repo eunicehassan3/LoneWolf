@@ -12,7 +12,8 @@ public class PlayerBehavior : MonoBehaviour
     public float attackRange = 2f;
     private GameObject[] allPrey;
     private Animator animator;
-    public float health = 5;
+    public float health = 3;
+    public float maxHealth= 3;
     public float maxFood = 600;
     public float food = 600;
     private float damageCooldown = 1f;
@@ -75,6 +76,7 @@ public class PlayerBehavior : MonoBehaviour
                     prey.GetComponent<Animator>().SetBool("isDead", true);
                     foodAudio.Play();
                     food = Mathf.Min(food + 60f, maxFood);
+                    health = Mathf.Min(health + .2f, maxHealth);
 
 
                     Destroy(prey.gameObject);

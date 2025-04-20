@@ -744,7 +744,7 @@ MonoBehaviour:
     louder their howls will sound.\nSurvive the wilderness long enough to return
     to them.\n\nControls:\n\nW / Up Arrow \u2013 Move Forward\n\nS / Down Arrow \u2013
     Move Backward\n\nA / Left Arrow \u2013 Turn Left\n\nD / Right Arrow \u2013 Turn
-    Right\n\nSpacebar \u2013 Attack (when near prey)"
+    Right\n\nSpacebar \u2013 Attack (when near prey)\n\nMouse - Rotate Camera"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 134b3bf6dd2284f7f987d1433ffc4e4e, type: 2}
   m_sharedMaterial: {fileID: 3001726020500287949, guid: 134b3bf6dd2284f7f987d1433ffc4e4e, type: 2}
